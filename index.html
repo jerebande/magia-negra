@@ -188,10 +188,7 @@ address{font-style:normal;font-size:1.2rem}
 .ticker{background-image:linear-gradient(110deg,transparent 0%,rgba(255,255,255,.08) 48%,transparent 55%);background-size:220% 100%;animation:ticker-glint 9s linear infinite}
 @keyframes ticker-glint{to{background-position:-220% 0}}
 @media(prefers-reduced-motion:reduce){.hero h1 em,.gallery .pola,.wa,.ticker{animation:none!important}.btn::after{display:none}}
-.lang{background:none;border:2px solid var(--ember);color:var(--ember);font:700 .85rem var(--body);letter-spacing:.12em;padding:.15rem .7rem;cursor:pointer;transition:background .2s,color .2s}
-.lang:hover{background:var(--ember);color:var(--ink)}
 .xtra{margin-top:1rem}.xtra[hidden]{display:none}
-@media(max-width:860px){.lang{margin:.7rem 4%}}
 .strip{padding:clamp(2.2rem,5vw,3.6rem) 0 0}
 .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
 .tile{position:relative;border:0;padding:0;overflow:hidden;aspect-ratio:4/5;cursor:zoom-in;background:#000;box-shadow:0 12px 28px rgba(0,0,0,.5)}
@@ -232,15 +229,27 @@ footer .social{margin:.4rem 0 .2rem}
 .fine a{text-decoration:none;color:var(--bone)}.fine a:hover{color:var(--ember)}
 .copy{font-size:.8rem}
 @media(max-width:600px){.sub{letter-spacing:.2em;font-size:.72rem}.lockup .fm{height:42px}}
+.navtools{display:flex;align-items:center;gap:.5rem}
+.langsw{display:flex;border:2px solid var(--ember)}
+.langsw button{background:none;border:0;color:var(--ember);font:700 .8rem var(--body);letter-spacing:.12em;padding:.3rem .65rem;cursor:pointer;transition:background .2s,color .2s}
+.langsw button.on{background:var(--ember);color:var(--ink)}
+.langsw button:not(.on):hover{background:rgba(240,147,43,.18)}
+.pricecta{display:flex;align-items:center;justify-content:space-between;gap:1rem 2rem;flex-wrap:wrap;margin:1.4rem 0 .4rem;padding:1rem 1.3rem;background:var(--ink);color:var(--bone);border-left:5px solid var(--blood);box-shadow:0 10px 24px rgba(40,20,5,.35)}
+.pricecta p{max-width:46ch;font-size:1.02rem;line-height:1.45}
+.pricecta .btn{margin:0}
+@media(max-width:600px){.pricecta{flex-direction:column;align-items:stretch;text-align:left}.pricecta .btn{text-align:center}}
+nav ul{order:2}.navtools{order:3}
+.brand .bt{display:none}.brand.txt .bt{display:block;font:400 1.4rem var(--head);color:var(--bone)}
+@media(max-width:860px){nav ul{order:0}}
 </style>
 </head>
 <body>
 <header id="top">
   <nav class="wrap" aria-label="Principal">
-    <a class="brand" href="#inicio" aria-label="Magia Negra"><img src="img/wordmark.svg" alt="Magia Negra" width="104" height="30"></a>
-    <button class="burger" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    <a class="brand" href="#inicio" aria-label="Magia Negra"><img src="img/wordmark.svg" alt="Magia Negra" width="104" height="30" onerror="var p=this.parentNode;this.remove();p.classList.add('txt')"><span class="bt">Magia Negra</span></a>
+    <div class="navtools"><div class="langsw" role="group" aria-label="Idioma / Language"><button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button></div><button class="burger" aria-label="Abrir menú" aria-expanded="false">☰</button></div>
     <ul id="menu">
-      <li><a href="#historia">Historia</a></li><li><a href="#carta">Carta</a></li><li><a href="#flamenco">Flamenco</a></li><li><a href="#musica">Música</a></li><li><a href="#contacto">Contacto</a></li><li><button class="lang" id="lang" type="button" aria-label="Change language">EN</button></li>
+      <li><a href="#historia">Historia</a></li><li><a href="#carta">Carta</a></li><li><a href="#flamenco">Flamenco</a></li><li><a href="#musica">Música</a></li><li><a href="#contacto">Contacto</a></li>
     </ul>
   </nav>
 </header>
@@ -255,7 +264,7 @@ footer .social{margin:.4rem 0 .2rem}
       <p>Pizzas al horno, tragos de la casa y cerveza artesanal Flamenco, entre afiches de rock y luz de velas. Taberna trattoria en Ayacucho desde 1995.</p>
       <div class="btns"><a class="btn fill" href="#carta">Ver la carta</a><a class="btn" data-wa="msg" href="#contacto" target="_blank" rel="noopener">Pedir por WhatsApp</a></div>
     </div>
-    <div class="poster"><img id="tilt" src="img/logo-pergamino.png" alt="Logo de Magia Negra: bruja en escoba sobre pergamino. Taberna Trattoria, desde 1995" width="671" height="900"></div>
+    <div class="poster"><picture><source srcset="img/logo-pergamino.webp" type="image/webp"><img id="tilt" src="img/logo-pergamino.png" alt="Logo de Magia Negra: bruja en escoba sobre pergamino. Taberna Trattoria, desde 1995" width="758" height="1024"></picture></div>
   </div>
 </section>
 <div class="tkwrap" aria-hidden="true"><div class="ticker"><div id="tk"></div></div></div>
@@ -287,7 +296,8 @@ footer .social{margin:.4rem 0 .2rem}
   <div class="wrap">
     <div class="rv">
       <h2>La carta</h2>
-      <p class="lead">Pizzas de masa fina con salsa Pizzagiola de la casa, y una barra con cócteles, pisco y cerveza artesanal. Precios en soles. Tocá una foto para verla completa.</p>
+      <p class="lead">Pizzas con salsa Pizzagiola y una barra con cócteles, pisco y cerveza artesanal. Tocá una foto para verla completa.</p>
+      <div class="pricecta"><p>Los precios y el costo del delivery se consultan por WhatsApp: el envío varía según la distancia.</p><a class="btn fill" data-wa="price" href="#contacto" target="_blank" rel="noopener">Consultar precios por WhatsApp</a></div>
       <p class="lead xtra" id="x-proceso" hidden></p>
       <div class="tabs" role="tablist"><button role="tab" aria-selected="true" aria-controls="p-pizzas" id="t1">Pizzas</button><button role="tab" aria-selected="false" aria-controls="p-bebidas" id="t2">Bebidas</button></div>
     </div>
@@ -305,7 +315,7 @@ footer .social{margin:.4rem 0 .2rem}
       <h2>Flamenco, nuestra cerveza</h2>
       <p>Flamenco es la cerveza artesanal de Magia Negra, producida por la casa. Se sirve en botella de 330 ml, bien fría, para acompañar la pizza o cerrar la noche con rock de fondo.</p>
       <p class="xtra" id="x-flamenco" hidden></p>
-      <div class="facts"><div><strong>330 ml</strong><span>Botella</span></div><div><strong>S/25</strong><span>Producción de Magia Negra</span></div></div>
+      <div class="facts"><div><strong>330 ml</strong><span>Botella</span></div><div><strong>Artesanal</strong><span>Producción de Magia Negra</span></div></div>
     </div>
   </div>
 </section>
@@ -344,7 +354,7 @@ footer .social{margin:.4rem 0 .2rem}
 
 <footer>
   <div class="wrap foot">
-    <div class="lockup"><img class="fw" src="img/bruja.svg" alt="" width="84" height="80"><img class="fm" src="img/wordmark.svg" alt="Magia Negra" width="172" height="50"></div>
+    <div class="lockup"><img class="fw" src="img/bruja.svg" alt="" width="84" height="80" onerror="this.style.display='none'"><img class="fm" src="img/wordmark.svg" alt="Magia Negra" width="172" height="50" onerror="this.style.display='none'"></div>
     <p class="sub">Taberna · Trattoria · Desde 1995</p>
     <p class="script">Un lugar mágico para una noche de magia.</p>
     <nav class="fnav" aria-label="Pie de página"><a href="#historia">Historia</a><a href="#carta">Carta</a><a href="#flamenco">Flamenco</a><a href="#musica">Música</a><a href="#contacto">Contacto</a></nav>
@@ -381,21 +391,23 @@ document.addEventListener('click',e=>{const z=e.target.closest('[data-zoom]');if
 lb.onclick=()=>lb.classList.remove('on');addEventListener('keydown',e=>e.key==='Escape'&&lb.classList.remove('on'));
 /* ===== Menú dinámico + idioma ES / EN ===== */
 let LANG='es';
+const SHOWP=(typeof SHOW_PRICES!=='undefined')&&SHOW_PRICES;
+const WAP=(typeof INFO!=='undefined'&&INFO.waPriceText)||{es:'Hola Magia Negra, quisiera consultar precios y delivery',en:"Hi Magia Negra, I'd like to ask about prices and delivery"};
 const T=(es,en)=>LANG==='en'?en:es;
 function renderMenu(){
  document.getElementById('pizzas').innerHTML=PIZZAS.map(p=>{const s=p[4],ext=(typeof PIZZA_EXT!=='undefined'&&PIZZA_EXT[s])||'jpg',desc=T(p[1],PIZZA_EN[p[0]]||p[1]),size=T(p[3],SIZE_EN[p[3]]||p[3]);
-  return `<article class="pz"><span class="sticker">S/${p[2]}</span>${s?`<div class="ph" data-zoom="img/pizzas/${s}.${ext}" style="--fy:${FY[s]||80}%"><img class="f" src="img/pizzas/${s}.${ext}" alt="Pizza ${p[0]}" loading="lazy"></div>`:`<div class="ph noimg"><img src="img/bruja.svg" alt=""></div>`}<div class="bd"><h3>${p[0]}</h3><span class="size">${size}</span><p>${desc}</p></div></article>`}).join('');
- document.getElementById('drinks').innerHTML=Object.entries(DRINKS).map(([g,it])=>`<div class="grp"><h3>${T(g,GRP_EN[g]||g)}</h3>${it.map(d=>{const pr=d[d.length-1],sub=d.length>2?T(d[1],SUB_EN[d[1]]||d[1]):'';return `<div class="row"><b>${T(d[0],ITEM_EN[d[0]]||d[0])}</b>${sub?`<i>${sub}</i>`:''}<span class="dots"></span><span class="pr">S/${pr}</span></div>`}).join('')}</div>`).join('');
+  return `<article class="pz">${SHOWP?`<span class="sticker">S/${p[2]}</span>`:''}${s?`<div class="ph" data-zoom="img/pizzas/${s}.${ext}" style="--fy:${FY[s]||80}%"><img class="f" src="img/pizzas/${s}.${ext}" alt="Pizza ${p[0]}" loading="lazy"></div>`:`<div class="ph noimg"><img src="img/bruja.svg" alt=""></div>`}<div class="bd"><h3>${p[0]}</h3><span class="size">${size}</span><p>${desc}</p></div></article>`}).join('');
+ document.getElementById('drinks').innerHTML=Object.entries(DRINKS).map(([g,it])=>`<div class="grp"><h3>${T(g,GRP_EN[g]||g)}</h3>${it.map(d=>{const pr=d[d.length-1],sub=d.length>2?T(d[1],SUB_EN[d[1]]||d[1]):'';return `<div class="row"><b>${T(d[0],ITEM_EN[d[0]]||d[0])}</b>${sub?`<i>${sub}</i>`:''}${SHOWP?`<span class="dots"></span><span class="pr">S/${pr}</span>`:''}</div>`}).join('')}</div>`).join('');
  const tk=T(['Pizzas al horno','Tragos de la casa','Cerveza Flamenco','Rock 60s a 80s','Desde 1995'],['Oven-baked pizzas','House cocktails','Flamenco beer','Rock from the 60s to the 80s','Since 1995']).join(' ✦ ')+' ✦ ';
  document.getElementById('tk').textContent=tk.repeat(8);
  [['nombre','x-nombre'],['flamenco','x-flamenco'],['proceso','x-proceso']].forEach(([k,id])=>{const el=document.getElementById(id),t=(EXTRA[k][LANG]||EXTRA[k].es||'').trim();el.textContent=t;el.hidden=!t});
 }
-const EN={"Taberna · Trattoria · Desde 1995":"Taberna · Trattoria · Since 1995","Pie de página":"Footer","Horarios": "Opening hours", "Desde 1995 · Ayacucho": "Since 1995 · Ayacucho", "Desde sus inicios, Magia Negra ha estado vinculada al arte, la literatura, las actividades culturales y la música.": "From the very beginning, Magia Negra has been linked to art, literature, cultural activities and music.", "Cerveza artesanal Flamenco": "Flamenco craft beer", "Pizza con una copa de cerveza y una botella de Flamenco": "Pizza with a glass of beer and a bottle of Flamenco","Pizzas al horno": "Oven-baked pizzas", "A la luz de las velas": "By candlelight", "Rock en las paredes": "Rock on the walls", "Cerveza Flamenco": "Flamenco beer", "Mesa a la luz de una vela con tazas rojas y panetón": "Table by candlelight with red cups and panettone", "Visitantes frente a la pared de afiches de rock y reggae": "Visitors in front of the rock and reggae poster wall", "Brindis con cerveza Flamenco": "A toast with Flamenco beer", "Gastronomía y ambiente": "Food and atmosphere","Historia": "History", "Carta": "Menu", "Música": "Music", "Contacto": "Contact", "Un lugar con": "A place with", "historia": "history", ", sabor y magia propia": ", flavor and a magic of its own", "Pizzas al horno, tragos de la casa y cerveza artesanal Flamenco, entre afiches de rock y luz de velas. Taberna trattoria en Ayacucho desde 1995.": "Oven-baked pizzas, house cocktails and Flamenco craft beer, among rock posters and candlelight. A taberna trattoria in Ayacucho since 1995.", "Ver la carta": "See the menu", "Pedir por WhatsApp": "Order on WhatsApp", "Nuestra historia": "Our story", "Magia Negra abrió sus puertas en mayo de 1995, en el corazón de Ayacucho. Desde el primer día fue más que un restaurante: un lugar donde se hablaba de arte, de libros y de música.": "Magia Negra opened its doors in May 1995, in the heart of Ayacucho. From day one it was more than a restaurant: a place to talk about art, books and music.", "Hoy recibe a ayacuchanos, viajeros de todo el Perú y turistas de otros países que se sientan a compartir una pizza, un trago y rock de los años 60, 70 y 80.": "Today it welcomes locals, travelers from all over Peru and visitors from abroad who sit down to share a pizza, a drink and rock from the 60s, 70s and 80s.", "Calidad": "Quality", "Autenticidad": "Authenticity", "Hospitalidad": "Hospitality", "Cultura": "Culture", "Comunidad": "Community", "La carta": "The menu", "Pizzas de masa fina con salsa Pizzagiola de la casa, y una barra con cócteles, pisco y cerveza artesanal. Precios en soles. Tocá una foto para verla completa.": "Thin-crust pizzas with our house Pizzagiola sauce, and a bar with cocktails, pisco and craft beer. Prices in Peruvian soles. Tap a photo to see it in full.", "Bebidas": "Drinks", "Todas las pizzas llevan mozzarella y salsa Pizzagiola.": "All pizzas come with mozzarella and Pizzagiola sauce.", "Flamenco, nuestra cerveza": "Flamenco, our beer", "Flamenco es la cerveza artesanal de Magia Negra, producida por la casa. Se sirve en botella de 330 ml, bien fría, para acompañar la pizza o cerrar la noche con rock de fondo.": "Flamenco is Magia Negra's own craft beer, brewed in-house. Served ice cold in a 330 ml bottle, it goes with a pizza or closes the night with rock in the background.", "Botella": "Bottle", "Producción de Magia Negra": "Brewed by Magia Negra", "Desde un lugar mágico": "From a magical place", "Las paredes están cubiertas de afiches de blues, reggae y rock. Acá la música no es fondo: es parte de la casa.": "The walls are covered with blues, reggae and rock posters. Here music is not background noise: it is part of the house.", "Visitanos": "Visit us",     "Cómo llegar": "Get directions", "Un lugar mágico para una noche de magia.": "A magical place for a night of magic.", "Abrir menú": "Open menu", "Escribir por WhatsApp": "Message us on WhatsApp", "Foto ampliada": "Enlarged photo", "Ampliar foto": "Enlarge photo", "Mapa de Magia Negra en Ayacucho": "Map of Magia Negra in Ayacucho", "Logo de Magia Negra: bruja en escoba sobre pergamino. Taberna Trattoria, desde 1995": "Magia Negra logo: a witch on a broom over a parchment. Taberna Trattoria, since 1995", "Anfitrión de Magia Negra junto a una vela y una calavera": "Magia Negra's host next to a candle and a skull", "Letrero de hierro con la bruja": "Iron sign with the witch", "Pizza recién cortada en bandeja metálica": "Freshly cut pizza on a metal tray", "Amigos brindando con cerveza Flamenco en la barra de Magia Negra": "Friends toasting with Flamenco beer at the Magia Negra bar", "El anfitrión de Magia Negra en la barra de la taberna": "The host of Magia Negra at the tavern bar", "Preparando cerveza artesanal Flamenco detrás de la barra": "Preparing Flamenco craft beer behind the bar", "El anfitrión junto a las variedades de cerveza Flamenco": "The host with the Flamenco beer varieties", "Mesas preparadas en el ambiente cálido de la taberna": "Tables set in the tavern's warm atmosphere", "Amigos compartiendo una noche en Magia Negra": "Friends sharing a night at Magia Negra", "Cerveza artesanal Flamenco servida en la mesa": "Flamenco craft beer served at the table", "Vela y calavera, detalles del ambiente de Magia Negra": "Candle and skull, details of the Magia Negra atmosphere", "Una visitante brinda con cerveza Flamenco": "A guest toasts with Flamenco beer"};
+const EN={"Pizzas con salsa Pizzagiola y una barra con cócteles, pisco y cerveza artesanal. Tocá una foto para verla completa.": "Pizzas with Pizzagiola sauce and a bar with cocktails, pisco and craft beer. Tap a photo to see it in full.", "Los precios y el costo del delivery se consultan por WhatsApp: el envío varía según la distancia.": "Prices and delivery costs are available on WhatsApp: delivery varies with distance.", "Consultar precios por WhatsApp": "Ask for prices on WhatsApp", "Artesanal": "Craft","Taberna · Trattoria · Desde 1995":"Taberna · Trattoria · Since 1995","Pie de página":"Footer","Horarios": "Opening hours", "Desde 1995 · Ayacucho": "Since 1995 · Ayacucho", "Desde sus inicios, Magia Negra ha estado vinculada al arte, la literatura, las actividades culturales y la música.": "From the very beginning, Magia Negra has been linked to art, literature, cultural activities and music.", "Cerveza artesanal Flamenco": "Flamenco craft beer", "Pizza con una copa de cerveza y una botella de Flamenco": "Pizza with a glass of beer and a bottle of Flamenco","Pizzas al horno": "Oven-baked pizzas", "A la luz de las velas": "By candlelight", "Rock en las paredes": "Rock on the walls", "Cerveza Flamenco": "Flamenco beer", "Mesa a la luz de una vela con tazas rojas y panetón": "Table by candlelight with red cups and panettone", "Visitantes frente a la pared de afiches de rock y reggae": "Visitors in front of the rock and reggae poster wall", "Brindis con cerveza Flamenco": "A toast with Flamenco beer", "Gastronomía y ambiente": "Food and atmosphere","Historia": "History", "Carta": "Menu", "Música": "Music", "Contacto": "Contact", "Un lugar con": "A place with", "historia": "history", ", sabor y magia propia": ", flavor and a magic of its own", "Pizzas al horno, tragos de la casa y cerveza artesanal Flamenco, entre afiches de rock y luz de velas. Taberna trattoria en Ayacucho desde 1995.": "Oven-baked pizzas, house cocktails and Flamenco craft beer, among rock posters and candlelight. A taberna trattoria in Ayacucho since 1995.", "Ver la carta": "See the menu", "Pedir por WhatsApp": "Order on WhatsApp", "Nuestra historia": "Our story", "Magia Negra abrió sus puertas en mayo de 1995, en el corazón de Ayacucho. Desde el primer día fue más que un restaurante: un lugar donde se hablaba de arte, de libros y de música.": "Magia Negra opened its doors in May 1995, in the heart of Ayacucho. From day one it was more than a restaurant: a place to talk about art, books and music.", "Hoy recibe a ayacuchanos, viajeros de todo el Perú y turistas de otros países que se sientan a compartir una pizza, un trago y rock de los años 60, 70 y 80.": "Today it welcomes locals, travelers from all over Peru and visitors from abroad who sit down to share a pizza, a drink and rock from the 60s, 70s and 80s.", "Calidad": "Quality", "Autenticidad": "Authenticity", "Hospitalidad": "Hospitality", "Cultura": "Culture", "Comunidad": "Community", "La carta": "The menu", "Bebidas": "Drinks", "Todas las pizzas llevan mozzarella y salsa Pizzagiola.": "All pizzas come with mozzarella and Pizzagiola sauce.", "Flamenco, nuestra cerveza": "Flamenco, our beer", "Flamenco es la cerveza artesanal de Magia Negra, producida por la casa. Se sirve en botella de 330 ml, bien fría, para acompañar la pizza o cerrar la noche con rock de fondo.": "Flamenco is Magia Negra's own craft beer, brewed in-house. Served ice cold in a 330 ml bottle, it goes with a pizza or closes the night with rock in the background.", "Botella": "Bottle", "Producción de Magia Negra": "Brewed by Magia Negra", "Desde un lugar mágico": "From a magical place", "Las paredes están cubiertas de afiches de blues, reggae y rock. Acá la música no es fondo: es parte de la casa.": "The walls are covered with blues, reggae and rock posters. Here music is not background noise: it is part of the house.", "Visitanos": "Visit us",     "Cómo llegar": "Get directions", "Un lugar mágico para una noche de magia.": "A magical place for a night of magic.", "Abrir menú": "Open menu", "Escribir por WhatsApp": "Message us on WhatsApp", "Foto ampliada": "Enlarged photo", "Ampliar foto": "Enlarge photo", "Mapa de Magia Negra en Ayacucho": "Map of Magia Negra in Ayacucho", "Logo de Magia Negra: bruja en escoba sobre pergamino. Taberna Trattoria, desde 1995": "Magia Negra logo: a witch on a broom over a parchment. Taberna Trattoria, since 1995", "Anfitrión de Magia Negra junto a una vela y una calavera": "Magia Negra's host next to a candle and a skull", "Letrero de hierro con la bruja": "Iron sign with the witch", "Pizza recién cortada en bandeja metálica": "Freshly cut pizza on a metal tray", "Amigos brindando con cerveza Flamenco en la barra de Magia Negra": "Friends toasting with Flamenco beer at the Magia Negra bar", "El anfitrión de Magia Negra en la barra de la taberna": "The host of Magia Negra at the tavern bar", "Preparando cerveza artesanal Flamenco detrás de la barra": "Preparing Flamenco craft beer behind the bar", "El anfitrión junto a las variedades de cerveza Flamenco": "The host with the Flamenco beer varieties", "Mesas preparadas en el ambiente cálido de la taberna": "Tables set in the tavern's warm atmosphere", "Amigos compartiendo una noche en Magia Negra": "Friends sharing a night at Magia Negra", "Cerveza artesanal Flamenco servida en la mesa": "Flamenco craft beer served at the table", "Vela y calavera, detalles del ambiente de Magia Negra": "Candle and skull, details of the Magia Negra atmosphere", "Una visitante brinda con cerveza Flamenco": "A guest toasts with Flamenco beer"};
 const origTxt=new WeakMap(),AK={alt:'oAlt','aria-label':'oAria',title:'oTitle'};
 function translateDOM(){
  const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;
  while(n=w.nextNode()){
-  if(!n.nodeValue.trim()||n.parentElement.closest('script,style,#pizzas,#drinks,#badge,#tk,#lang,.xtra,#hours,address,[data-phone],[data-address],#yr'))continue;
+  if(!n.nodeValue.trim()||n.parentElement.closest('script,style,#pizzas,#drinks,#badge,#tk,[data-l],.langsw,.xtra,#hours,address,[data-phone],[data-address],#yr'))continue;
   if(!origTxt.has(n))origTxt.set(n,n.nodeValue);
   const o=origTxt.get(n),k=o.trim();n.nodeValue=(LANG==='en'&&EN[k])?o.replace(k,EN[k]):o}
  document.querySelectorAll('[alt],[aria-label],[title]').forEach(el=>Object.keys(AK).forEach(a=>{
@@ -406,7 +418,7 @@ function translateDOM(){
 const fmtT=t=>{let[hh,mm]=t.split(':').map(Number);hh%=24;return `${hh%12||12}:${String(mm).padStart(2,'0')} ${hh>=12?'pm':'am'}`};
 function fillInfo(){
  const q=s=>document.querySelectorAll(s);
- q('[data-wa]').forEach(a=>a.href=`https://wa.me/${INFO.whatsapp}`+(a.dataset.wa==='msg'?`?text=${encodeURIComponent(T(INFO.waText.es,INFO.waText.en))}`:''));
+ q('[data-wa]').forEach(a=>a.href=`https://wa.me/${INFO.whatsapp}`+(a.dataset.wa==='msg'?`?text=${encodeURIComponent(T(INFO.waText.es,INFO.waText.en))}`:a.dataset.wa==='price'?`?text=${encodeURIComponent(T(WAP.es,WAP.en))}`:''));
  q('[data-ig]').forEach(a=>a.href=INFO.instagram);q('[data-fb]').forEach(a=>a.href=INFO.facebook);
  q('[data-map]').forEach(a=>a.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(INFO.mapQuery));
  document.getElementById('yr').textContent=new Date().getFullYear();
@@ -432,12 +444,13 @@ function updateBadge(){const b=document.getElementById('badge');
   b.textContent=m<first?T('Cerrado ahora · abrimos a las ','Closed now · we open at ')+fmtT(td.find(x=>mins(x.open)===first).open):T('Cerrado ahora','Closed now')}}
 function applyLang(l){
  LANG=l;document.documentElement.lang=l;
+ document.querySelectorAll('.langsw button').forEach(b=>{const on=b.dataset.l===l;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});
  document.title=T('Magia Negra Taberna Trattoria · Pizzas, tragos y rock en Ayacucho desde 1995','Magia Negra Taberna Trattoria · Pizza, drinks and rock in Ayacucho since 1995');
  document.querySelector('meta[name=description]').content=T('Taberna trattoria en Ayacucho, Perú. Pizzas al horno, cócteles, cerveza artesanal Flamenco y rock desde 1995. Jirón Bellido 349.','Taberna trattoria in Ayacucho, Peru. Oven-baked pizza, cocktails, Flamenco craft beer and rock since 1995. Jirón Bellido 349.');
  renderMenu();translateDOM();fillInfo();updateBadge();
- const lg=document.getElementById('lang');lg.textContent=T('EN','ES');lg.setAttribute('aria-label',T('Change language to English','Cambiar idioma a español'));
+ 
  try{localStorage.setItem('mn-lang',l)}catch(e){}}
-document.getElementById('lang').onclick=()=>applyLang(LANG==='en'?'es':'en');
+document.querySelectorAll('.langsw button').forEach(b=>b.onclick=()=>applyLang(b.dataset.l));
 (function(){let l=new URLSearchParams(location.search).get('lang');
  if(l!=='en'&&l!=='es'){try{l=localStorage.getItem('mn-lang')}catch(e){}}
  if(l!=='en'&&l!=='es')l=(navigator.language||'es').toLowerCase().startsWith('en')?'en':'es';

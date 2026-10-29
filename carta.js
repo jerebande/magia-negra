@@ -75,3 +75,11 @@ const INFO={
   {es:"Zona bar, lunes a viernes",en:"Bar area, Monday to Friday",days:[1,2,3,4,5],open:"18:00",close:"24:00"}
  ]
 };
+
+/* =====================================================================
+   PRECIOS: con false no se muestra ningún precio en la página y se invita
+   a consultar por WhatsApp (el delivery varía según la distancia).
+   Con true vuelven los precios que figuran en PIZZAS y DRINKS.
+   ===================================================================== */
+const SHOW_PRICES=false;
+INFO.waPriceText={es:"Hola Magia Negra, quisiera consultar precios y delivery",en:"Hi Magia Negra, I'd like to ask about prices and delivery"};
