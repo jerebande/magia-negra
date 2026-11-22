@@ -7,8 +7,8 @@
      completan (origen del nombre, info de Flamenco, proceso de las pizzas).
    ===================================================================== */
 const SALSA=" y salsa Pizzagiola.";
-const FY={calzone:70,'quattro-staggioni':86,sorrento:88,posilipo:86,italiana:76,marechiare:55,vesuvio:80,'la-rabiatta':82,margarita:86,'magia-negra':80,hawaiana:50,'al-ajo':50};
-const PIZZA_EXT={hawaiana:'png','al-ajo':'png'}; /* foco vertical de cada foto (%) */
+const FY={'lasagna-magia-negra':100,calzone:70,'quattro-staggioni':86,sorrento:88,posilipo:86,italiana:76,marechiare:55,vesuvio:80,'la-rabiatta':82,margarita:86,'magia-negra':80,hawaiana:50,'al-ajo':50};
+const PIZZA_EXT={hawaiana:'png'}; /* foco vertical de cada foto (%) */
 const PIZZAS=[
  ["Magia Negra","Mozzarella, champignones, pimentones, aceitunas, tocinos, chorizos"+SALSA,50,"Familiar","magia-negra"],
  ["Margarita","Mozzarella, pimentones, tomates, cebollas"+SALSA,50,"Familiar","margarita"],
@@ -23,6 +23,14 @@ const PIZZAS=[
  ["Calzone","Mozzarella, jamón, chorizos, tocinos"+SALSA,60,"Familiar","calzone"],
  ["Al Ajo","Crema de ajo con especias y queso mozzarella.",35,"Mediana","al-ajo"]
 ];
+/* PASTAS: nombre, ingredientes, precio (null = sin precio cargado), nombre del archivo en img/pastas/<nombre>.jpg.
+   Para sumar otra pasta: copiar la línea, subir su foto y agregar su descripción en inglés en PASTA_EN. */
+const PASTAS=[
+ ["Lasagna Magia Negra","Pasta de lasagna, mozzarella, carne, salsa Bechamel y salsa Pizzagiola.",null,"lasagna-magia-negra"]
+];
+const PASTA_EN={
+ "Lasagna Magia Negra":"Lasagna pasta, mozzarella, meat, Béchamel sauce and Pizzagiola sauce."
+};
 const DRINKS={
  "Cócteles y clásicos":[["Pisco Sour",30],["Chilcano de Pisco",20],["Algarrobina",30],["Mojito",30],["Caipirinha",30],["Piña Colada",30],["Tom Collins",30],["Blue Lady",30],["Laguna Azul","(Blue Lagoon)",30],["Campari Orange",35],["Martini Soda",30],["Negroni","Martini + Campari + Gin",35],["Spinetta Jade","Anís + menta",25],["Medias de Seda",25],["Long Island",35],["Tequila Sunrise",30],["Destornillador","Vodka Absolut + naranja + granadina",30]],
  "Destilados y combinados":[["Whisky Jack Daniels",40],["Whisky Black Label",40],["Fernet",30],["Cuba Libre Appleton Especial Rubio",20],["Cuba Libre Appleton Especial Estate",30],["Flor de Caña 5 años",25],["Flor de Caña 7 años",35],["Ima Animosky",20],["Vodka Tónic","Absolut",30],["Gin & Gin",30],["Gin Tónic","Burnetts",30],["Shot de Pisco",10],["Shot de Tequila",20],["Anís shot",15]],
@@ -67,7 +75,9 @@ const INFO={
  waText:{es:"Hola Magia Negra, quisiera hacer un pedido",en:"Hi Magia Negra, I'd like to place an order"},
  instagram:"https://www.instagram.com/tabernamagianegra",
  facebook:"https://www.facebook.com/tabernamagianegra",
- address:{es:"Jirón Bellido N° 349, Ayacucho, Perú",en:"Jirón Bellido N° 349, Ayacucho, Peru"},
+ street:{es:"Jirón Bellido N° 339 y 349",en:"Jirón Bellido N° 339 and 349"},   /* pie de página, línea 1 */
+ city:{es:"Ayacucho, Perú",en:"Ayacucho, Peru"},                              /* pie de página, línea 2 (con el teléfono) */
+ address:{es:"Jirón Bellido N° 339 y 349, Ayacucho, Perú",en:"Jirón Bellido N° 339 and 349, Ayacucho, Peru"},
  mapQuery:"Jirón Bellido 349 Ayacucho Perú",
  hours:[
   {es:"Restaurante, lunes a jueves",en:"Restaurant, Monday to Thursday",days:[1,2,3,4],open:"18:00",close:"23:00"},
