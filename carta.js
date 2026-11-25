@@ -8,7 +8,7 @@
    ===================================================================== */
 const SALSA=" y salsa Pizzagiola.";
 const FY={'lasagna-magia-negra':100,calzone:70,'quattro-staggioni':86,sorrento:88,posilipo:86,italiana:76,marechiare:55,vesuvio:80,'la-rabiatta':82,margarita:86,'magia-negra':80,hawaiana:50,'al-ajo':50};
-const PIZZA_EXT={hawaiana:'png'}; /* foco vertical de cada foto (%) */
+const PIZZA_EXT={}; /* foco vertical de cada foto (%) */
 const PIZZAS=[
  ["Magia Negra","Mozzarella, champignones, pimentones, aceitunas, tocinos, chorizos"+SALSA,50,"Familiar","magia-negra"],
  ["Margarita","Mozzarella, pimentones, tomates, cebollas"+SALSA,50,"Familiar","margarita"],
